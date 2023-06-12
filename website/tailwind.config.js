@@ -83,7 +83,7 @@ module.exports = {
         '5xl': 'var(--fs-5xl)',
         'h1-lg': [ 'var(--fs-5xl)', { lineHeight: 'var(--lh-lg)', letterSpacing: 'var(--ls-sm)' } ],
         'h1-md': [ 'var(--fs-4xl)', { lineHeight: 'var(--lh-lg)', letterSpacing: 'var(--ls-sm)' } ],
-        'h1-sm': [ 'var(--fs-2xl)', { lineHeight: 'var(--lh-lg)', letterSpacing: 'var(--ls-sm)' } ],
+        'h1-sm': [ 'var(--fs-3xl)', { lineHeight: 'var(--lh-lg)', letterSpacing: 'var(--ls-sm)' } ],
         'h2-lg': [ 'var(--fs-4xl)', { lineHeight: 'var(--lh-lg)', letterSpacing: 'var(--ls-sm)' } ],
         'h2-md': [ 'var(--fs-3xl)', { lineHeight: 'var(--lh-lg)', letterSpacing: 'var(--ls-sm)' } ],
         'h2-sm': [ 'var(--fs-xl)', { lineHeight: 'var(--lh-lg)', letterSpacing: 'var(--ls-sm)' } ],
