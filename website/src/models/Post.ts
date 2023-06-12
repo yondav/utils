@@ -1,84 +1,44 @@
 import { graphql } from 'gatsby';
 
-interface MethodNode {
-  id: string
-  fields: {
-    name: string
-    path: string
-  }
-  internal: {
-    contentFilePath: string
-  }
+type ExportFields = {
+  category: 'methods';
+  name: string;
+  path: string;
+  slug: string;
+  type: 'string';
 }
 
-const MethodNodeQuery = graphql`
-  fragment MethodNode on Mdx {
-    id
-    fields {
-      name
-      path
-    }
-  }
-`;
-
-interface Post extends MethodNode {
-  id: string
-  excerpt: string
-  shortDescription: string
-  fields: {
-    path: string
-    name: string
-    type: 'method'
-  }
+interface ExportNode {
+  id: string;
+  fields: ExportFields;
   frontmatter: {
-    title: string
-    date: string
+    title: string;
+    date: string;
+    description: string;
     relatedFunctions: {
       type: string;
       category: string;
       slug: string;
       title: string;
-    }[]
-  }
-  body: string
+    }[];
+  };
+  body: string;
 }
 
-const PostPreviewQuery = graphql`
-  fragment PostPreview on Mdx {
+const ExportNodeQuery = graphql`
+  fragment ExportNode on Mdx {
     id
-    excerpt(pruneLength: 155)
-    shortDescription: excerpt(pruneLength: 280)
     fields {
+      category
       name
-      type
       path
+      slug
+      type
     }
     frontmatter {
       title
       date
-      relatedFunctions {
-        type
-        category
-        slug
-        title
-      }
-    }
-  }
-`;
-
-const PostQuery = graphql`
-  fragment Post on Mdx {
-    id
-    excerpt(pruneLength: 155)
-    shortDescription: excerpt(pruneLength: 280)
-    fields {
-      name
-      type
-      path
-    }
-    frontmatter {
-      title
-      date
+      description
       relatedFunctions {
         type
         category
@@ -90,9 +50,29 @@ const PostQuery = graphql`
   }
 `;
 
-export type { MethodNode, Post };
-export {
-  MethodNodeQuery,
-  PostPreviewQuery,
-  PostQuery
-};
+const ExportNodePreviewQuery = graphql`
+  fragment ExportNodePreview on Mdx {
+    id
+    fields {
+      category
+      name
+      path
+      slug
+      type
+    }
+    frontmatter {
+      title
+      date
+      description
+      relatedFunctions {
+        type
+        category
+        slug
+        title
+      }
+    }
+  }
+`;
+
+export type { ExportNode };
+export { ExportNodeQuery, ExportNodePreviewQuery, };
