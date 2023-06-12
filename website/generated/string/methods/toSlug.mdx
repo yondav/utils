@@ -1,0 +1,32 @@
+---
+title: toSlug
+date: '2023-06-03'
+description: A simple function to slugify a string.
+relatedFunctions:
+  - type: string
+    category: methods
+    slug: to-camel-case
+    title: toCamelCase()
+---
+
+
+### Source
+
+```tsfunction toSlug(input: string) {
+  const regex = /[^a-z|A-Z|0-9]/g;
+
+  return input
+    .toLowerCase()
+    .trim()
+    .replace(regex, '-');
+}
+```
+
+### Demo
+
+```tsimport { toSlug } from '@yondav/utils/string';
+
+const slug = toSlug('foo bar');
+
+console.log(slug); // foo-bar
+```

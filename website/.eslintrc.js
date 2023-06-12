@@ -28,7 +28,11 @@ module.exports = {
       rules: {
         'react/require-default-props': 'off',
         'react/jsx-props-no-spreading': 'off',
-        'react/react-in-jsx-scope': 'off'
+        'react/react-in-jsx-scope': 'off',
+        '@typescript-eslint/member-delimiter-style': 'error',
+        'object-curly-spacing': 'off',
+        '@typescript-eslint/object-curly-spacing': [ 'error', 'always' ],
+
       }
     },
     {

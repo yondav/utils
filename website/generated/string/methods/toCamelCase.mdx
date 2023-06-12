@@ -1,0 +1,42 @@
+---
+title: toCamelCase
+date: '2023-06-03'
+description: A simple function to format a string to camel case.
+relatedFunctions:
+  - type: string
+    category: methods
+    slug: to-slug
+    title: toSlug()
+---
+
+
+### Source
+
+```ts
+function toCamelCase(input: string) {
+  const regex = /[^a-z|A-Z|0-9]+/;
+
+  return input
+    .split(regex)
+    .map((word, i) => (i > 0
+      ? word.toLowerCase()
+        .charAt(0)
+        .toUpperCase() + word.slice(1)
+        .toLowerCase()
+      : word.toLowerCase())
+    )
+    .join('')
+    .trim()
+    .trimStart();
+}
+```
+
+### Demo
+
+```ts
+import { toCamelCase } from '@yondav/utils/string';
+
+const camelCase = toCamelCase('foo-bar');
+
+console.log(camelCase); // fooBar
+```
