@@ -1,10 +1,10 @@
 import type { SiteMetadata } from '../hooks/useSiteMetadata';
-import type { Nodes, Post } from '../models';
+import type { Nodes, ExportNode } from '../models';
 
 interface SerializeProps {
   query: {
-    posts: Nodes<Omit<Post, 'body'>>
-  }
+    posts: Nodes<Omit<ExportNode, 'body'>>;
+  };
 }
 
 const query = `{
@@ -35,14 +35,14 @@ const serializer = ({
   // eslint-disable-next-line @typescript-eslint/no-shadow
   query,
 }: {
-  siteMetadata: SiteMetadata
-  query: { posts: Nodes<Omit<Post, 'body'>> }
-}) => query.posts.nodes.map(({ frontmatter, excerpt, fields }) => {
+  siteMetadata: SiteMetadata;
+  query: { posts: Nodes<Omit<ExportNode, 'body'>> };
+}) => query.posts.nodes.map(({ frontmatter, fields }) => {
   const { title, date } = frontmatter;
   const url = `${siteMetadata.siteUrl}/method${fields.path}`;
   return {
     title: `${title}`,
-    description: excerpt || '',
+    description: frontmatter.description || '',
     author: siteMetadata.author,
     date,
     url,
