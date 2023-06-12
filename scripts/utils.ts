@@ -1,24 +1,41 @@
-import fs from 'fs';
+import fs, { existsSync } from 'fs';
 import path from 'path';
-// function isHookFile(filename: string): boolean {
-//   const hookRegex = /^use[A-Z][a-zA-Z]*$/;
-//   return hookRegex.test(filename);
-// }
-const methods = { string: path.resolve('./src', 'string') };
+
+type UtilDir = { [ key in 'methods' ]: string }
+interface UtilDirs {
+  string: UtilDir
+}
+
+const utils: UtilDirs = {
+  string: {
+    methods: path.resolve('./src', 'string', 'methods')
+  }
+};
+
+function log(message: string) {
+  // eslint-disable-next-line no-console
+  console.log(message);
+}
 
 function getFileName(pathname: string): string {
   return pathname.split('/').reverse()[0];
 }
 
+function checkFileExists(pathName: string) {
+  if (!existsSync(pathName)) {
+    throw new Error(`${getFileName(pathName)} doesn't exist`);
+  }
+}
+
 interface CopyFileProps {
   source: string
   dest: string
-  toMarkdown?: boolean
-  methodType: 'string'
+  toMarkdown: boolean
+  type: 'string'
 }
 
 function copyFile({
-  source, dest, toMarkdown, methodType
+  source, dest, toMarkdown, type
 }: CopyFileProps) {
   // Check source file
   if (!fs.existsSync(source)) {
@@ -33,7 +50,7 @@ function copyFile({
     existingFile = true;
   }
 
-  // Read source then create markdown hook file
+  // Read source then create markdown source file
   fs.readFile(source, 'utf8', (err, data) => {
     if (err) {
       console.error(`Cannot read ${source}`);
@@ -43,13 +60,13 @@ function copyFile({
     const name = getFileName(dest);
     const extension = source.split('.').reverse()[0];
     const writeStream = fs.createWriteStream(dest);
-    // TODO: Theses hooks don't work on CodeSandbox, make it work.
+
     const preCode = `\`\`\`${extension}`;
 
     let streamData = data;
 
     if (toMarkdown) {
-      // rename import from "from '..'" to "from 'usehooks-ts'"
+      // rename import from "from '..'" to "from '@yondav/utils'"
       const exportRegex = /export default /;
       const importRegex = /from '..';$/;
 
@@ -59,7 +76,7 @@ function copyFile({
           : line);
 
         l = importRegex.test(l)
-          ? l.replace(importRegex, `from '@yondav/utils/${methodType}';`)
+          ? l.replace(importRegex, `from '@yondav/utils/${type}';`)
           : l;
 
         return l;
@@ -72,7 +89,7 @@ function copyFile({
     writeStream.write(streamData);
     writeStream.end();
 
-    console.log(`${name} ${existingFile ? 'updated' : 'created'}`);
+    log(`${name} ${existingFile ? 'updated' : 'created'}`);
   });
 }
 
@@ -102,13 +119,16 @@ const toQueryParams = (params: Record<string, any>): string => {
   return `?${paramsAsString}`;
 };
 
+export type { UtilDir, UtilDirs };
 export {
-  // isHookFile,
+  camelToKebabCase,
+  checkFileExists,
   copyFile,
   createDirIfNeeded,
-  methods,
-  isDir,
+  getFileName,
   isDemoFile,
-  camelToKebabCase,
+  isDir,
+  log,
   toQueryParams,
+  utils,
 };
