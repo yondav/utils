@@ -1,16 +1,16 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
 interface SiteMetadata {
-  title: string
-  description: string
-  siteUrl: string
-  author: string
+  title: string;
+  description: string;
+  siteUrl: string;
+  author: string;
 }
 
 interface Query {
   site: {
-    siteMetadata: SiteMetadata
-  }
+    siteMetadata: SiteMetadata;
+  };
 }
 
 function useSiteMetadata() {
