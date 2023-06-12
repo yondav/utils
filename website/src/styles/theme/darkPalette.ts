@@ -13,62 +13,52 @@ enum NEUTRAL {
   shadow = '#0D1016',
 }
 
-enum PINKHIGHLIGHT {
-  phl100 = '#DEC0E9',
-  phl200 = '#786D7C',
-  phl300 = '#5A535D',
-}
-
-enum HIGHLIGHT {
-  greyTransparent = '#5B5F60D0',
-}
-
 enum BLUE {
-  b100 = '#C7E9FF',
-  b200 = '#ABDAF8',
-  b300 = '#7AC6F5',
-  b400 = '#62C2FD',
-  b500 = '#49B8FD',
+  b100 = '#CDE6F7',
+  b200 = '#BDDDF4',
+  b300 = '#9BCDEE',
+  b400 = '#7ABCE9',
+  b500 = '#59ABE3',
 }
 
 enum CYAN {
-  c100 = '#C2FDFF',
-  c200 = '#9EFCFF',
-  c300 = '#75FAFF',
-  c400 = '#5FF6FC',
-  c500 = '#1CF3FB',
+  c100 = '#BFEBE1',
+  c200 = '#AAE4D7',
+  c300 = '#7FD6C3',
+  c400 = '#55C9AF',
+  c500 = '#2ABB9B',
 }
 
 enum GREEN {
-  g100 = '#C8F9CE',
-  g200 = '#A8F5B1',
-  g300 = '#83F190',
-  g400 = '#63ED74',
-  g500 = '#3DEA55',
+  g100 = '#B7E2B7',
+  g200 = '#A3D9A3',
+  g300 = '#7AC67A',
+  g400 = '#51B451',
+  g500 = '#28A228',
 }
 
 enum MAGENTA {
-  m100 = '#E6D1FF',
-  m200 = '#DABDFF',
-  m300 = '#CCA3FF',
-  m400 = '#C496FC',
-  m500 = '#BB86FC',
+  m100 = '#ECD3F6',
+  m200 = '#E5C5F3',
+  m300 = '#D9A8EC',
+  m400 = '#CC8BE6',
+  m500 = '#BF6EE0',
 }
 
 enum YELLOW {
-  y100 = '#FEF5CD',
-  y200 = '#FDECA0',
-  y300 = '#FCE373',
-  y400 = '#FBDB4B',
-  y500 = '#FACF10',
+  y100 = '#F6E4B7',
+  y200 = '#F3DB9F',
+  y300 = '#EEC96E',
+  y400 = '#E8B73E',
+  y500 = '#E2A50E',
 }
 
 enum RED {
-  r100 = '#FF9191',
-  r200 = '#FF7878',
-  r300 = '#FF5F5F',
-  r400 = '#FF4646',
-  r500 = '#FF2D2D',
+  r100 = '#F8C9C4',
+  r200 = '#F5B7B1',
+  r300 = '#F1948A',
+  r400 = '#EC7063',
+  r500 = '#E74C3C',
 }
 
 enum GRADIENT {
