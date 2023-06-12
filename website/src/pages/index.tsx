@@ -1,4 +1,4 @@
-import Hero from '../components/hero';
+import Hero from '../components/Hero';
 // import SEO from '../components/seo';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 
@@ -6,16 +6,12 @@ import useSiteMetadata from '../hooks/useSiteMetadata';
 //   return <SEO />;
 // }
 
-function PostListTemplate() {
-  const { author, title, description } = useSiteMetadata();
+function TemplatePage() {
+  const { description } = useSiteMetadata();
   return (
-    <Hero
-      author={author}
-      title={title}
-      description={description}
-    />
+    <Hero description={description} />
   );
 }
 
 // export { Head };
-export default PostListTemplate;
+export default TemplatePage;
