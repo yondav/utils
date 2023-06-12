@@ -11,13 +11,13 @@ declare module 'twin.macro' {
 declare module 'react' {
   // The css prop
   interface HTMLAttributes<T> extends DOMAttributes<T> {
-    css?: CSSProp
-    tw?: string
+    css?: CSSProp;
+    tw?: string;
   }
   // The inline svg css prop
   interface SVGProps<T> extends SVGProps<SVGSVGElement> {
-    css?: CSSProp
-    tw?: string
+    css?: CSSProp;
+    tw?: string;
   }
 }
 
@@ -25,7 +25,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicAttributes<T> extends DOMAttributes<T> {
-      as?: string | Element
+      as?: string | Element;
     }
   }
 }
@@ -45,4 +45,6 @@ declare global {
     __theme: any;
     __setPreferredTheme: any;
   }
+
+  type Nullable<T> = T | null | undefined;
 }
