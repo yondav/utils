@@ -10,9 +10,17 @@ const onCreateNode: GatsbyNode['onCreateNode'] = args => {
 
   if (node.internal.type === 'Mdx') {
     const absolutePath = node.internal.contentFilePath as string;
-    const file = absolutePath.split('/').reverse()[0].split('.');
-    const filename = file[0];
-    const type = file.length === 3 ? file[1] : undefined;
+    const pathChunks = absolutePath.split('/');
+    const { 0: type, 1: category, 2: file } = pathChunks.slice(pathChunks.indexOf('generated') + 1);
+    const filename = file.split('.')[0];
+    const slug = camelToKebabCase(filename);
+    const path = `/${type}/${category}/${slug}`;
+
+    actions.createNodeField({
+      node,
+      name: 'category',
+      value: category,
+    });
 
     actions.createNodeField({
       node,
@@ -22,14 +30,20 @@ const onCreateNode: GatsbyNode['onCreateNode'] = args => {
 
     actions.createNodeField({
       node,
-      name: 'type',
-      value: type,
+      name: 'path',
+      value: path,
     });
 
     actions.createNodeField({
       node,
-      name: 'path',
-      value: `/${camelToKebabCase(filename)}`,
+      name: 'slug',
+      value: slug,
+    });
+
+    actions.createNodeField({
+      node,
+      name: 'type',
+      value: type,
     });
   }
 };
