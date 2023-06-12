@@ -188,6 +188,8 @@ const CustomStyles = createGlobalStyle({
     backgroundColor: theme`colors.bg`,
     backgroundImage: `radial-gradient(at 80% 20%, ${theme`colors.gradient.secondary`} 0px, transparent 35%), radial-gradient(at 80% 100%, ${theme`colors.gradient.primary`} 0px, transparent 60%)`,
   },
+
+  '.keyword': { fontWeight: `${theme`fontWeight.bold`} !important` }
 });
 
 function GlobalStyles() {
