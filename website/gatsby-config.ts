@@ -37,27 +37,27 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/generated/posts`,
-        name: 'posts',
-        type: 'post'
+        path: `${__dirname}/generated`,
+        // name: 'strings',
+        // type: 'string'
       },
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/generated/methods`,
-        name: 'methods',
-        type: 'method'
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/generated/demos`,
-        name: 'demos',
-        type: 'demo'
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     path: `${__dirname}/generated/methods`,
+    //     name: 'methods',
+    //     type: 'method'
+    //   },
+    // },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     path: `${__dirname}/generated/demos`,
+    //     name: 'demos',
+    //     type: 'demo'
+    //   },
+    // },
     // {
     //   resolve: `gatsby-plugin-algolia`,
     //   options: {
